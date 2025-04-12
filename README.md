@@ -1,9 +1,9 @@
-# Hyprland Everforest< br / >< br / >
+# Hyprland Everforest
 
-Bar: Waybar< br / >
-WM: Hyprland< br / >
-GTK Theme: Everforest GTK Theme< br / >
-Shell: Bash + Starship< br / >
-Notification: swaync< br / >
-< br / >< br / >
+Bar: Waybar
+WM: Hyprland
+GTK Theme: Everforest GTK Theme
+Shell: Bash + Starship
+Notification: swaync
+
 Still work in progress. :)
