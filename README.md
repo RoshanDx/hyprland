@@ -1,4 +1,5 @@
 # Hyprland Everforest
+
 Bar: Waybar
 WM: Hyprland
 GTK Theme: Everforest GTK Theme
