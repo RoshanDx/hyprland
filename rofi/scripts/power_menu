@@ -1,0 +1,90 @@
+#!/bin/sh
+
+# CMDs
+uptime="`uptime -p | sed -e 's/up //g'`"
+
+# rofi theme
+theme="$HOME/.config/rofi/themes/power_menu.rasi"
+confirm_theme="$HOME/.config/rofi/themes/confirm.rasi"
+
+# Get user confirmation 
+get_confirmation() {
+	rofi -dmenu -i -monitor -1 \
+		 -no-fixed-num-lines \
+		 -p "Are you sure? : " \
+		 -theme "$confirm_theme" 
+		 
+}
+
+
+get_options() {
+  echo "   Poweroff"
+  echo "   Reboot"
+  echo "   Lock"
+  echo "   Suspend"
+  echo "   Logout"
+}
+
+main() {
+
+  # get choice from rofi
+  choice=$( (get_options) | rofi -show -dmenu -p "" -i -theme "$theme")
+
+  # run the selected command
+  case $choice in
+  '   Poweroff')
+	ans=$(get_confirmation)
+	if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+	    systemctl poweroff
+	elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+	    exit
+        else
+	    exit
+        fi
+    ;;
+  '   Reboot')
+ 	ans=$(get_confirmation)
+ 	if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+ 	    systemctl reboot
+ 	elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+ 	    exit
+ 	else
+ 	    exit
+ 	fi
+    # systemctl reboot
+    ;;
+  '   Lock')
+      hyprlock
+    ;;
+  '   Suspend')
+    	ans=$(get_confirmation)
+	if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+	mpc -q pause
+	amixer set Master mute
+	betterlockscreen --suspend
+	elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+	    exit
+        else
+	    exit
+        fi
+    ;;
+  '   Logout')
+	ans=$(get_confirmation)
+	if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
+      hyprctl dispatch exit
+	elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+	    exit
+        else
+	    exit
+        fi
+    ;;
+  esac
+
+  # done
+  set -e
+}
+
+main &
+
+exit 0
+

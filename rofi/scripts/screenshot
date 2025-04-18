@@ -1,0 +1,73 @@
+#!/bin/bash
+
+# rofi theme
+theme="$HOME/.config/rofi/themes/screenshot.rasi"
+notify="notify-send -u low -t 2000 Screenshot 'Saved as file' -u normal -i $HOME/.config/rofi/images/screenshot.png"
+notify_clip="notify-send -u low -t 2000 Screenshot 'Saved to clipboard' -u normal -i $HOME/.config/rofi/images/screenshot.png"
+output="$HOME/Pictures/screenshots/"
+filename="$(date +%Y-%m-%d-%T)-screenshot.png"
+
+# options to be displayed
+option0="  Screen"
+option1="󰲎  Area"
+option2="  Window"
+option3="  Screen delay 5s"
+option4="  Window delay 5s"
+
+#option to save to
+suboption0="  Clipboard"
+suboption1="  File"
+
+# options to be displyed
+options="$option0\n$option1\n$option2\n$option3\n$option4"
+suboptions="$suboption0\n$suboption1"
+
+selected="$(echo -e "$options" | rofi -dmenu -i -selected-row 0 -theme "$theme")"
+#subselected="$(echo -e "$suboptions" | rofi -dmenu -i -selected-row 0 -theme "$theme" -no-fixed-num-lines)"
+
+case $selected in
+    $option0)
+		case "$(echo -e "$suboptions" | rofi -dmenu -i -selected-row 0 -theme "$theme" -no-fixed-num-lines)" in
+			$suboption0)
+        hyprshot -m output -m active --clipboard-only -s -- $(eval "$notify_clip");;
+			$suboption1)
+        hyprshot -m output -m active -f $filename -o $output -s -- $(eval "$notify");;
+		esac;;
+    $option1)
+		case "$(echo -e "$suboptions" | rofi -dmenu -i -selected-row 0 -theme "$theme" -no-fixed-num-lines)" in
+			$suboption0)
+        hyprshot -m region --clipboard-only -s 
+        $(eval "$notify_clip") ;;
+			$suboption1)
+        hyprshot -m region -f $filename -o $output -s
+        $(eval "$notify") ;;
+		esac;;
+    $option2)
+		case "$(echo -e "$suboptions" | rofi -dmenu -i -selected-row 0 -theme "$theme" -no-fixed-num-lines)" in
+			$suboption0)
+        hyprshot -m window -m active --clipboard-only -s 
+        $(eval "$notify_clip") ;;
+			$suboption1)
+      hyprshot -m window -m active -f $filename -o $output -s -- $(eval "$notify") ;;
+		esac;;
+    $option3)
+		case "$(echo -e "$suboptions" | rofi -dmenu -i -selected-row 0 -theme "$theme" -no-fixed-num-lines)" in
+			$suboption0)
+        sleep 5;
+        hyprshot -m output -m active --clipboard-only -s -- $(eval "$notify_clip");;
+			$suboption1)
+        sleep 5;
+        hyprshot -m output -m active -f $filename -o $output -s -- $(eval "$notify");;
+		esac;;
+    $option4)
+		case "$(echo -e "$suboptions" | rofi -dmenu -i -selected-row 0 -theme "$theme" -no-fixed-num-lines)" in
+			$suboption0)
+        sleep 5;
+        hyprshot -m window -m active --clipboard-only -s -- $(eval "$notify_clip");;
+			$suboption1)
+        sleep 5;
+      hyprshot -m window -m active -f $filename -o $output -s -- $(eval "$notify");;
+		esac;;
+	*)		
+esac
+

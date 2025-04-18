@@ -1,3 +1,8 @@
+@define-color base      #1b2732; /* gunmetal */
+@define-color innerbox  #5b718a; /* paynes-gray */
+@define-color color0    #ffffff; /* french-gray */
+@define-color color1    #e69875; /* cordovan */
+@define-color color2    #83c092; /* green */
 * {
   border: none;
   font-family: JetBrainsMono Nerd Font;
@@ -7,31 +12,32 @@
 
 window#waybar {
   background: @base;
-  color: @color8;
+  color: @color0;
 }
 
 tooltip {
   background: @base;
-  border-color: @crust;
+  border-color: @color0;
   border-radius: 10px;
   border-style: solid;
   border-width: 2px;
 }
 
-#backlight,
 #cpu,
-#custom-swaync,
 #memory,
+#mpris,
+#custom-swaync,
 #network,
 #pulseaudio,
 #tray,
+#bluetooth,
 #clock,
 #window,
-#mpris,
+#custom-updates,
 #workspaces {
-  background: @crust;
+  background: @innerbox;
   border-radius: 8px;
-  border: 1px solid @crust;
+  border: 1px solid @innerbox;
   font-weight: 600;
   margin: 6px 0 6px 0;
   padding: 3.5px 16px;
@@ -57,29 +63,29 @@ tooltip {
 
 #workspaces button {
   border-radius: 6px;
-  color: @color9;
+  color: @color0;
   padding: 6px;
   margin-right: 5px;
 }
 
 #workspaces button.active {
-  background: @color2;
-  color: @color8;
+  background: @color0;
+  color: @base;
 }
 
 #workspaces button.focused {
-  background: @color7;
-  color: @color8;
+  background: @color0;
+  color: @base;
 }
 
 #workspaces button.urgent {
-  background: @color4;
-  color: @color8;
+  background: @color0;
+  color: @base;
 }
 
 #workspaces button:hover {
-  background: @crust;
-  color: @color7;
+  background: @color0;
+  color: @base;
 }
 
 #window {
@@ -91,7 +97,7 @@ tooltip {
 
 #cpu,
 #memory {
-  color: @color1;
+  color: @color0;
 }
 
 #cpu {
@@ -106,13 +112,13 @@ tooltip {
 }
 
 #mpris {
-  color: @color7;
+  color: @color0;
   margin-left: 10px;
 }
 
 #clock {
   border-right: 0px;
-  color: @color6;
+  color: @color0;
   font-weight: 600;
   margin-right: 10px;
 }
@@ -125,7 +131,7 @@ tooltip {
 }
 
 #network {
-  color: @color3;
+  color: @color0;
   margin-right: 10px;
 }
 
@@ -135,3 +141,48 @@ tooltip {
   color: @color5;
   margin-right: 10px;
 }
+
+#bluetooth {
+  color: @color0;
+  margin-right: 10px;
+}
+
+#custom-updates {
+  color: @color3;
+  margin-right: 10px;
+}
+
+#custom-updates.green {
+    background-color: @innerbox;
+}
+
+#custom-updates.yellow {
+    background-color: #ff9a3c;
+    color: #FFFFFF;
+}
+
+#custom-updates.red {
+    background-color: #dc2f2f;
+    color: #FFFFFF;
+}
+
+#cpu.warning{
+    background-color: #ff9a3c;
+    color: #FFFFFF;
+}
+
+#cpu.critical {
+    background-color: #dc2f2f;
+    color: #FFFFFF;
+}
+
+#memory.warning{
+    background-color: #ff9a3c;
+    color: #FFFFFF;
+}
+
+#memory.critical {
+    background-color: #dc2f2f;
+    color: #FFFFFF;
+}
+

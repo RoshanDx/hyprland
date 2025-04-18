@@ -1,0 +1,128 @@
+* {
+     font: "JetBrainsMono Nerd Font 14";
+}
+* {
+     al: #00000000;
+     fg: #F8F8F2;
+     ac: #5b718a;
+     bg: #1b2732;
+     sc: #ffffff;
+}
+ configuration {
+     show-icons: true;
+     icon-theme: "Papirus";
+     display-drun: "";
+     display-window: "";
+     display-run: "";
+     drun-display-format: "{name}";
+     disable-history: false;
+     fullscreen: false;
+     hide-scrollbar: true;
+     sidebar-mode: false;
+}
+ window {
+     transparency: "real";
+     background-color: @bg;
+     text-color: @fg;
+     border: 4px;
+     border-color: @ac;
+     border-radius: 0;
+     width: calc(50% min 800);
+     location: center;
+     x-offset: 0;
+     y-offset: 0;
+}
+ prompt {
+     enabled: false;
+     background-color: @al;
+     text-color: @sc;
+}
+ entry {
+     background-color: @al;
+     text-color: @fg;
+     placeholder-color: @fg;
+     expand: true;
+     horizontal-align: 0;
+     placeholder: "Calculate...";
+     padding: 0 0 0 0px;
+     blink: true;
+}
+ inputbar {
+     children: [ prompt, entry ];
+     background-color: @ac;
+     text-color: @fg;
+     expand: false;
+     border: 0% 0% 0% 0%;
+     border-radius: 0px;
+     border-color: @ac;
+     margin: 0% 0% 0% 0%;
+     padding: 30px;
+}
+ listview {
+     background-color: @al;
+     padding: 10px;
+     columns: 1;
+     lines: 5;
+     spacing: 0%;
+     cycle: false;
+     dynamic: true;
+     layout: vertical;
+}
+ mainbox {
+     background-color: @al;
+     border: 0% 0% 0% 0%;
+     border-radius: 0% 0% 0% 0%;
+     border-color: @ac;
+     spacing: 0%;
+     padding: 0%;
+}
+ element {
+     background-color: @al;
+     text-color: @fg;
+     orientation: horizontal;
+     border-radius: 0%;
+     padding: 15px;
+}
+ element-icon {
+     size: 25px;
+     border: 0px;
+     background-color: @bg;
+}
+ element-text {
+     background-color: @bg;
+     text-color: @fg;
+     expand: true;
+     margin: 0.5% 0.5% 0.5% 0.5%;
+}
+ element selected {
+     background-color: @sc;
+     text-color: @fg;
+     border: 0% 0% 0% 0%;
+     border-radius: 0;
+     border-color: @bg;
+}
+ element-icon selected {
+     size: 49px;
+     border: 0px;
+     background-color: @sc;
+}
+ element-text selected {
+     background-color: @sc;
+     text-color: @bg;
+     expand: true;
+     horizontal-align: 0.5;
+     vertical-align: 0.5;
+     margin: 0.5% 0.5% -0.5% 0.5%;
+}
+ 
+
+message {
+    padding: 20px;
+    background-color: @bg;
+    text-color: @bg;
+}
+
+textbox {
+     background-color: @bg;
+     text-color: @fg;
+}

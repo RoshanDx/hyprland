@@ -1,0 +1,30 @@
+ * {
+     font: "JetBrainsMono Nerd Font 14";
+}
+ * {
+     al: #00000000;
+     fg: #F8F8F2;
+     ac: #5b718a;
+     bg: #1b2732;
+     sc: #ffffff;
+}
+ * {
+     background-color: @bg;
+     text-color: @fg;
+}
+ window {
+     width: 250px;
+     padding: 20px;
+     border: 1px;
+     border-radius: 0px;
+     border-color: @ac;
+     location: center;
+     x-offset: 0;
+     y-offset: -4%;
+}
+ entry {
+     expand: true;
+     width: 150px;
+     text-color: @sc;
+}
+ 

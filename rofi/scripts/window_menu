@@ -1,0 +1,4 @@
+# rofi theme
+theme="$HOME/.config/rofi/themes/app_menu.rasi"
+
+rofi -show window -p "" -theme "$theme" -monitor -1

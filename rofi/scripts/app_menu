@@ -1,0 +1,6 @@
+rofi -no-lazy-grab \
+-modi "drun" -show drun \
+-location 2 \
+-theme ~/.config/rofi/themes/app_menu.rasi \
+-xoffset 0 -yoffset 200 \
+-monitor -1

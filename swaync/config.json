@@ -13,28 +13,24 @@
     "timeout-low": 5,
     "timeout-critical": 20,
     "fit-to-screen": true,
-    "control-center-width": 350,
-    "notification-window-width": 350,
+    "control-center-width": 425,
+    "notification-window-width": 400,
     "keyboard-shortcuts": true,
     "image-visibility": "when-available",
-    "transition-time": 200,
+    "transition-time": 0,
     "hide-on-clear": false,
     "hide-on-action": true,
     "script-fail-notify": true,
     "widgets": [
         "title",
         "dnd",
-        "notifications",
-        "mpris",
-        "volume",
-        "backlight",
-        "buttons-grid"
+        "notifications"
     ],
     "widget-config": {
         "title": {
             "text": "󰂚  :: Notifications",
             "clear-all-button": true,
-            "button-text": "󰎟 "
+            "button-text": "Clear All"
         },
         "dnd": {
             "text": "Do Not Disturb"
@@ -42,41 +38,6 @@
         "label": {
             "max-lines": 1,
             "text": "Notification Center"
-        },
-        "mpris": {
-            "image-size": 96,
-            "image-radius": 10
-        },
-        "volume": {
-            "label": "󰕾 "
-        },
-        "backlight": {
-            "label": "󰃟 ",
-            "subsystem": "backlight"
-        },
-        "buttons-grid": {
-            "actions": [
-                {
-                    "label": "󰔏",
-                    "command": "hyprshade toggle redshift"
-                },
-                {
-                    "label": "󰌵",
-                    "command": "hyprshade toggle dim"
-                },
-                {
-                    "label": "󰊠",
-                    "command": "hyprshade toggle grayscale"
-                },
-                {
-                    "label": "󰏘",
-                    "command": "hyprshade toggle vibrance"
-                },
-                {
-                    "label": "󰌁",
-                    "command": "hyprshade toggle invert"
-                }
-            ]
         }
     }
 }

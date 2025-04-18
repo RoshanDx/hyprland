@@ -1,0 +1,6 @@
+#!/bin/bash
+
+#rofi theme
+theme="$HOME/.config/rofi/themes/calculator.rasi"
+
+rofi -show calc -modi calc -no-show-match -no-sort -theme "$theme"
