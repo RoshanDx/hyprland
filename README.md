@@ -1,21 +1,20 @@
 # Hyprland
-OS • Arch Linux
-WM • Hyprland
-GTK Theme • Graphite Dark Nord
-GTK Font Name • JetbrainsMono Nerd Font
-GTK Cursor Name • Bibata Modern Ice
-GTK Icon Theme • Tela Circle Nord Dark
-Terminal • Kitty (Fish)
-File Manager • Thunar
-Bar • Waybar
-Application Launcher • Rofi (wayland fork)
-Notification Manager • Swaync
-Login • Sddm
-Polkit Agent • lxsession
-Lockscreen • Hyprlock
-Image Viewer • Viewnior
-Text Editor • Neovim
-
+OS • **Arch Linux** <br />
+WM • **Hyprland** <br />
+GTK Theme • **Graphite Dark Nord** <br />
+GTK Font Name • **JetbrainsMono Nerd Font** <br />
+GTK Cursor Name • **Bibata Modern Ice** <br />
+GTK Icon Theme • **Tela Circle Nord Dark** <br />
+Terminal • **Kitty (Fish)** <br />
+File Manager • **Thunar** <br />
+Bar • **Waybar** <br />
+Application Launcher • **Rofi (wayland fork)** <br />
+Notification Manager • **Swaync** <br />
+Login • **Sddm** <br />
+Polkit Agent • **lxsession** <br />
+Lockscreen • **Hyprlock** <br />
+Image Viewer • **Viewnior** <br />
+Text Editor • **Neovim** <br />
 
 ## Screenshots
 ![plain_view](https://github.com/user-attachments/assets/5fd98a29-d96d-4a71-9c62-f6278ca498ab)
