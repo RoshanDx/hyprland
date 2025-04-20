@@ -2,11 +2,19 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+set -x GOROOT /usr/local/go
+set -x JETBRAINS_TOOLBOX $HOME/.local/share/JetBrains/Toolbox/scripts
+set -x PATH $PATH $GOROOT/bin $JETBRAINS_TOOLBOX
+
+set -x GOPATH $HOME/golibs
+set -x PATH $PATH $GOPATH/bin
+
 set -U fish_greeting
 
 starship init fish | source
 
 # Alias
+alias ssh="kitten ssh"
 
 # Abbreviation
 abbr -a cls clear

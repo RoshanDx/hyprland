@@ -1,5 +1,5 @@
 -- General
-vim.opt.termguicolors = false           -- Enable term GUI colors
+vim.opt.termguicolors = true            -- Enable term GUI colors
 vim.opt.fileencoding = "utf-8"          -- Set file encoding to UTF-8
 vim.opt.updatetime = 100                -- Set faster completion
 vim.opt.mouse = "a"                     -- Enable mouse support
