@@ -31,6 +31,7 @@ vim.opt.smartindent = true -- Enable smart indentation
 vim.opt.breakindent = true -- Enable line breaking indentation
 
 -- Lines
+vim.opt.number = true
 vim.opt.relativenumber = true -- Display line number
 vim.opt.wrap = false          -- Display lines as single line
 vim.opt.cursorline = true     -- Highlight current line

@@ -2,10 +2,11 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-set -x GOROOT /usr/local/go
 set -x JETBRAINS_TOOLBOX $HOME/.local/share/JetBrains/Toolbox/scripts
 set -x PATH $PATH $GOROOT/bin $JETBRAINS_TOOLBOX
 
+set -x GOROOT /usr/local/go
+set -x PATH $PATH $GOROOT/bin
 set -x GOPATH $HOME/golibs
 set -x PATH $PATH $GOPATH/bin
 
