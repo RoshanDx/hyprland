@@ -10,6 +10,8 @@ set -x PATH $PATH $GOROOT/bin
 set -x GOPATH $HOME/golibs
 set -x PATH $PATH $GOPATH/bin
 
+set -x PATH $PATH $HOME/.local/bin
+
 set -U fish_greeting
 
 starship init fish | source
