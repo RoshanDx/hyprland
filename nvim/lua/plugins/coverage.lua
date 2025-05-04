@@ -8,25 +8,25 @@ return {
 	end,
 	keys = {
 		{
-			"<leader>tlc",
+			"<leader>tcl",
 			function()
 				require("coverage").load()
 			end,
-			desc = "[T]est [L]oad [C]overage",
+			desc = "[T]est [C]overage [L]oad",
 		},
 		{
-			"<leader>tc",
+			"<leader>tct",
 			function()
 				require("coverage").toggle()
 			end,
-			desc = "[T]est [C]overage",
+			desc = "[T]est [C]overage [T]oggle",
 		},
 		{
-			"<leader>ts",
+			"<leader>tcs",
 			function()
 				require("coverage").summary()
 			end,
-			desc = "[T]est [S]ummary",
+			desc = "[T]est [C]overage [S]ummary",
 		},
 	},
 }

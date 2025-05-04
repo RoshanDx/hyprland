@@ -32,7 +32,7 @@ keymap.set("n", "<leader>w-", ":split<CR>", { desc = "[W]indow Horizontal" })
 -- Buffers
 keymap.set("n", "<tab>", ":bnext<CR>", opts)
 keymap.set("n", "<s-tab>", ":bprev<CR>", opts)
-keymap.set("n", "<leader>bq", ":bdelete!<CR>", { desc = "[B]uffer [Q]uit" })
+keymap.set("n", "<leader>bd", ":bdelete!<CR>", { desc = "[B]uffer [D]elete" })
 
 -- Vertical split resize
 keymap.set("n", "<C-Left>", ":vertical resize +3<CR>")
