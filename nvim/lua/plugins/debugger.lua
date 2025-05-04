@@ -22,10 +22,6 @@ return {
 			end)
 		end, { desc = "[D]ebug: Set [B]reakpoint" })
 
-		-- vim.keymap.set("n", "<leader>dB", function()
-		-- 	dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-		-- end, { desc = "[D]ebug: Set [B]reakpoint" })
-
 		-- Colorscheme
 		vim.api.nvim_set_hl(0, "DapStopped", {
 			fg = "#E5E9F0", -- white text

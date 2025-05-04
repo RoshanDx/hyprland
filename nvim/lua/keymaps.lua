@@ -47,8 +47,8 @@ keymap.set("v", ">", ">gv")
 -- Highlight
 keymap.set("n", "<esc>", "<cmd>noh<cr><esc>") -- Clear search highlight
 
--- Quicklist (Toggle)
-keymap.set("n", "<leader>q", function()
+-- Quickfixlist (Toggle)
+keymap.set("n", "<leader>ql", function()
 	local qf_win = vim.fn.getqflist({ winid = 0 }).winid
 	if qf_win ~= 0 then
 		vim.cmd("cclose")

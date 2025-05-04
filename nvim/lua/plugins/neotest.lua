@@ -32,7 +32,7 @@ return {
 				desc = "Run All [T]est Files",
 			},
 			{
-				"<leader>tr",
+				"<leader>tn",
 				function()
 					require("neotest").run.run()
 				end,

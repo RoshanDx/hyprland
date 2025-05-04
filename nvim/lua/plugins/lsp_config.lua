@@ -108,14 +108,14 @@ return {
 				severity_sort = true,
 				float = { border = "rounded", source = "if_many" },
 				underline = { severity = vim.diagnostic.severity.ERROR },
-				signs = vim.g.have_nerd_font and {
+				signs = {
 					text = {
 						[vim.diagnostic.severity.ERROR] = "󰅚 ",
 						[vim.diagnostic.severity.WARN] = "󰀪 ",
 						[vim.diagnostic.severity.INFO] = "󰋽 ",
 						[vim.diagnostic.severity.HINT] = "󰌶 ",
 					},
-				} or {},
+				},
 				virtual_text = {
 					source = "if_many",
 					spacing = 2,
@@ -130,6 +130,23 @@ return {
 					end,
 				},
 			})
+
+			-- Disable if need icons, the top config doesnt override the icons for whatever reason
+			-- Comment out the top config and uncomment this bottom code
+			-- vim.diagnostic.config({
+			-- 	severity_sort = true,
+			-- 	float = { border = "rounded", source = "if_many" },
+			-- })
+			-- local signs = {
+			-- 	{ name = "DiagnosticSignError", text = "󰅚" },
+			-- 	{ name = "DiagnosticSignWarn", text = "󰀪" },
+			-- 	{ name = "DiagnosticSignHint", text = "󰌶" },
+			-- 	{ name = "DiagnosticSignInfo", text = "󰋽" },
+			-- }
+			--
+			-- for _, sign in ipairs(signs) do
+			-- 	vim.fn.sign_define(sign.name, { text = sign.text, texthl = sign.name, numhl = "" })
+			-- end
 
 			-- lua
 			lspconfig.lua_ls.setup({
