@@ -30,17 +30,38 @@ return {
 				lsp_format = lsp_format_opt,
 			}
 		end,
-		formatters_by_ft = {
+		formatters_by_ft = { -- NOTE: make sure dependencies are installed in Mason or externally
 			lua = { "stylua" },
 			json = { "prettierd" },
 			go = { "goimports", "gofmt", "golines" },
-			yaml = { "prettier" },
+			yaml = { "yq" },
+			yml = { "yq" },
+			xml = { "yq" },
 
 			-- Conform can also run multiple formatters sequentially
 			-- python = { "isort", "black" },
 			--
 			-- You can use 'stop_after_first' to run the first available formatter from the list
 			-- javascript = { "prettierd", "prettier", stop_after_first = true },
+		},
+		formatters = {
+			yq = {
+				command = "yq",
+				args = {
+					"eval",
+					".",
+					"-", -- equivalent to formatting input from stdin
+				},
+				stdin = true,
+			},
+			-- 	xmllint = { -- uncomment if want to use existing xmllint in system [libxml2]
+			-- 		command = "xmllint",
+			-- 		args = {
+			-- 			"--format",
+			-- 			"-",
+			-- 		},
+			-- 		stdin = true,
+			-- 	},
 		},
 	},
 }

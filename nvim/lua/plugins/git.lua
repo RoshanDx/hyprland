@@ -20,10 +20,10 @@ return {
 				vim.cmd("DiffviewFileHistory " .. user_input)
 			end
 
-			vim.keymap.set("n", "<leader>gc", "<cmd>DiffviewOpen<cr>", { desc = "[G]it [C]urrent" })
-			vim.keymap.set("n", "<leader>gf", diffOpenFileHistory, { desc = "[G]it [F]iles" })
-			vim.keymap.set("n", "<leader>gv", diffOpenWithInput, { desc = "[G]it Re[V]ision" })
-			vim.keymap.set("n", "<leader>gq", "<cmd>DiffviewClose<cr>", { desc = "[G]it [Q]uit" })
+			vim.keymap.set("n", "<leader>gc", "<cmd>DiffviewOpen<cr>", { desc = "[G]it Diffview [C]urrent" })
+			vim.keymap.set("n", "<leader>gf", diffOpenFileHistory, { desc = "[G]it Diffview [F]iles" })
+			vim.keymap.set("n", "<leader>gv", diffOpenWithInput, { desc = "[G]it Diffview Re[V]ision" })
+			vim.keymap.set("n", "<leader>gq", "<cmd>DiffviewClose<cr>", { desc = "[G]it Diffview [Q]uit" })
 		end,
 	},
 	{

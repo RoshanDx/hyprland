@@ -53,8 +53,8 @@ return {
 					{ name = "emoji" },
 				},
 				window = {
-					completion = { border = "solid" },
-					documentation = { border = "solid" },
+					completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered(),
 				},
 				mapping = {
 					["<CR>"] = cmp.mapping.confirm({ select = false }),

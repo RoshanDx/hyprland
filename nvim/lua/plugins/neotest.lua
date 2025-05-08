@@ -9,10 +9,12 @@ return {
 			{ "fredrikaverpil/neotest-golang", version = "*" }, -- Installation
 		},
 		config = function()
-			local neotest_golang_opts = {} -- Specify custom configuration
 			require("neotest").setup({
 				adapters = {
-					require("neotest-golang")(neotest_golang_opts), -- Registration
+					require("neotest-golang")({}),
+					require("neotest-java")({
+						ignore_wrapper = false, -- whether to ignore maven/gradle wrapper
+					}),
 				},
 			})
 		end,
@@ -37,6 +39,13 @@ return {
 					require("neotest").run.run()
 				end,
 				desc = "Run [T]est [N]earest",
+			},
+			{
+				"<leader>td",
+				function()
+					require("neotest").run.run({ strategy = "dap" })
+				end,
+				desc = "Run [T]est Nearest [D]ebug",
 			},
 			{
 				"<leader>tl",
@@ -64,7 +73,7 @@ return {
 				function()
 					require("neotest").output_panel.toggle()
 				end,
-				desc = "[T]est [T]oggle [O]utput Panel",
+				desc = "[T]est Toggle [O]utput Panel",
 			},
 			{
 				"<leader>tS",
@@ -80,6 +89,16 @@ return {
 				end,
 				desc = "[T]oggle [W]atch",
 			},
+		},
+	},
+	{
+		"rcasia/neotest-java",
+		ft = "java",
+		dependencies = {
+			"mfussenegger/nvim-jdtls",
+			"mfussenegger/nvim-dap", -- for the debugger
+			"rcarriga/nvim-dap-ui", -- recommended
+			"theHamsta/nvim-dap-virtual-text", -- recommended
 		},
 	},
 }

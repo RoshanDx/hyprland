@@ -49,6 +49,8 @@ return {
 			{ "<leader>d", group = "[D]ebug" },
 			{ "<leader>g", group = "[G]it" },
 			{ "<leader>G", group = "[G]olang" },
+			{ "<leader>J", group = "[J]ava" },
+			{ "<leader>q", group = "[Q]uicklist" },
 			{ "<leader>s", group = "[S]earch" },
 			{ "<leader>t", group = "[T]est" },
 			{ "<leader>w", group = "[W]indow" },

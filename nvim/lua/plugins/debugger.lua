@@ -9,6 +9,7 @@ return {
 	config = function()
 		-- DAP
 		local dap = require("dap")
+
 		vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "[D]ebug [B]reakpoint" })
 		vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "[D]ebug [C]ontinue" })
 		vim.keymap.set("n", "<leader>di", dap.step_over, { desc = "[D]ebug Step [I]nto" })
