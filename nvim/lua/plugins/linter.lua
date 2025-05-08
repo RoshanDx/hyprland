@@ -5,8 +5,7 @@ return {
 		local lint = require("lint")
 
 		lint.linters_by_ft = {
-			typescript = { "eslint_d" },
-			-- go = { "golangcilint" },
+			-- go = { "golangcilint" }, -- NOTE: ensure golangcilint is installed
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

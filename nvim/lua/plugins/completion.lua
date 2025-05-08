@@ -11,6 +11,14 @@ return {
 		},
 	},
 	{
+		"MattiasMTS/cmp-dbee",
+		dependencies = {
+			{ "kndndrj/nvim-dbee" },
+		},
+		ft = "sql", -- optional but good to have
+		opts = {}, -- needed
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		config = function()
 			local cmp = require("cmp")
@@ -79,6 +87,7 @@ return {
 					{ name = "buffer" }, -- text within current buffer
 					{ name = "path" }, -- file system paths
 					{ name = "emoji" },
+					{ name = "cmp-dbee" },
 				},
 				window = {
 					completion = cmp.config.window.bordered(),

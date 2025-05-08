@@ -47,6 +47,7 @@ return {
 		spec = {
 			{ "<leader>b", group = "[B]uffer" },
 			{ "<leader>d", group = "[D]ebug" },
+			{ "<leader>D", group = "[D]atabase" },
 			{ "<leader>g", group = "[G]it" },
 			{ "<leader>G", group = "[G]olang" },
 			{ "<leader>J", group = "[J]ava" },
