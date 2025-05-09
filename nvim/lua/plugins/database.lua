@@ -17,9 +17,9 @@ return {
 				-- mappings for the buffer
 				mappings = {
 					-- run what's currently selected on the active connection
-					{ key = "<leader>De", mode = "v", action = "run_selection" },
+					{ key = "BB", mode = "v", action = "run_selection" },
 					-- run the whole file on the active connection
-					{ key = "<leader>De", mode = "n", action = "run_file" },
+					{ key = "BB", mode = "n", action = "run_file" },
 				},
 			},
 		})

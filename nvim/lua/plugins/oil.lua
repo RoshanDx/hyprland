@@ -12,6 +12,6 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>-", ":Oil<CR>", { desc = "Oil" })
+		vim.keymap.set("n", "<leader>_", ":Oil<CR>", { desc = "Oil" })
 	end,
 }

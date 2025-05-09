@@ -6,6 +6,8 @@ return {
 
 		lint.linters_by_ft = {
 			-- go = { "golangcilint" }, -- NOTE: ensure golangcilint is installed
+			sh = { "shellcheck" },
+			bash = { "shellcheck" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

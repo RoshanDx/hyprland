@@ -16,7 +16,7 @@ keymap.set("n", "<C-u>", "<C-u>zz") -- Middle view when going up
 keymap.set("n", "n", "nzzzv")
 keymap.set("n", "N", "Nzzzv")
 
---keymap.set("n", "<leader>w", ":w<CR>", { desc = "[W]rite File" }) -- write file
+keymap.set("n", "<leader>w", ":w<CR>", { desc = "[W]rite File" }) -- write file
 keymap.set("n", "<leader>e", ":qa<CR>", { desc = "[E]xit Neovim" }) -- exit Neovim
 
 -- Panes
@@ -26,8 +26,8 @@ keymap.set("n", "<c-k>", "<c-w>k", opts)
 keymap.set("n", "<c-l>", "<c-w>l", opts)
 
 -- Windows
-keymap.set("n", "<leader>w\\", ":vsplit<CR>", { desc = "[W]indow Vertical" })
-keymap.set("n", "<leader>w-", ":split<CR>", { desc = "[W]indow Horizontal" })
+keymap.set("n", "<leader>\\", ":vsplit<CR>", { desc = "which_key_ignore", silent = true })
+keymap.set("n", "<leader>-", ":split<CR>", { desc = "which_key_ignore", silent = true })
 
 -- Buffers
 keymap.set("n", "<tab>", ":bnext<CR>", opts)

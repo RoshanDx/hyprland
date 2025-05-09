@@ -37,6 +37,8 @@ return {
 			yaml = { "yq" },
 			yml = { "yq" },
 			xml = { "yq" },
+			bash = { "shfmt" },
+			sh = { "shfmt" },
 
 			-- Conform can also run multiple formatters sequentially
 			-- python = { "isort", "black" },
