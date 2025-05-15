@@ -1,8 +1,25 @@
 return {
 	"mfussenegger/nvim-dap",
 	dependencies = {
+		{
+			"igorlfs/nvim-dap-view",
+			opts = {
+				winbar = {
+					sections = { "console", "watches", "scopes", "exceptions", "breakpoints", "threads", "repl" },
+				},
+				windows = {
+					terminal = {
+						position = "left",
+						-- List of debug adapters for which the terminal should be ALWAYS hidden
+						hide = {},
+						-- Hide the terminal when starting a new session
+						start_hidden = true,
+					},
+				},
+			},
+		},
 		"leoluz/nvim-dap-go",
-		"rcarriga/nvim-dap-ui",
+		-- "rcarriga/nvim-dap-ui",
 		"theHamsta/nvim-dap-virtual-text",
 		"nvim-neotest/nvim-nio",
 	},
@@ -45,26 +62,22 @@ return {
 		)
 		vim.fn.sign_define("DapStopped", { text = "▶", texthl = "", linehl = "DapStopped", numhl = "" })
 
-		-- DAP UI
-		require("dapui").setup()
-		local dapui = require("dapui")
-		dap.listeners.before.attach.dapui_config = function()
-			dapui.open()
+		-- DAP View
+		local dv = require("dap-view")
+		dap.listeners.before.attach["dap-view-config"] = function()
+			dv.open()
 		end
-		dap.listeners.before.launch.dapui_config = function()
-			dapui.open()
+		dap.listeners.before.launch["dap-view-config"] = function()
+			dv.open()
 		end
-		dap.listeners.before.event_terminated.dapui_config = function()
-			dapui.close()
+		dap.listeners.before.event_terminated["dap-view-config"] = function()
+			dv.close()
 		end
-		dap.listeners.before.event_exited.dapui_config = function()
-			dapui.close()
+		dap.listeners.before.event_exited["dap-view-config"] = function()
+			dv.close()
 		end
 
-		vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "[D]ebug [U]I" })
-		vim.keymap.set("n", "<leader>d?", function()
-			dapui.eval(nil, { enter = true })
-		end, { desc = "[D]ebug Inspect" })
+		vim.keymap.set("n", "<leader>du", dv.toggle, { desc = "[D]ebug [U]I" })
 
 		-- DAP Virtual Text
 		require("nvim-dap-virtual-text").setup()
@@ -72,6 +85,23 @@ return {
 		-- GO
 		require("dap-go").setup()
 		local dap_go = require("dap-go")
-		vim.keymap.set("n", "<leader>dt", dap_go.debug_test, { desc = "[D]ebug [T]est" })
+
+		require("which-key").add({
+			{ "<leader>Gd", group = "[G]o [D]ebug" },
+			{
+				"<leader>Gdt",
+				function()
+					dap_go.debug_test()
+				end,
+				desc = "[G]o [D]ebug [T]est",
+			},
+			{
+				"<leader>Gdl",
+				function()
+					dap_go.debug_last_test()
+				end,
+				desc = "[G]o [D]ebug [L]ast Test",
+			},
+		})
 	end,
 }

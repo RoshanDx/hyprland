@@ -19,8 +19,6 @@ return {
 
 			require("luasnip.loaders.from_vscode").lazy_load()
 
-			vim.opt.completeopt = "menu,menuone,noselect"
-
 			local has_words_before = function()
 				unpack = unpack or table.unpack
 				local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -55,9 +53,13 @@ return {
 			}
 
 			cmp.setup({
+				preselect = cmp.PreselectMode.None,
+				completion = {
+					completeopt = "menu,menuone,noneselect",
+				},
 				snippet = {
 					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
+						luasnip.lsp_expand(args.body)
 					end,
 				},
 				formatting = {
@@ -84,15 +86,21 @@ return {
 					completion = cmp.config.window.bordered(),
 					documentation = cmp.config.window.bordered(),
 				},
-				mapping = {
-					["<CR>"] = cmp.mapping.confirm({ select = false }),
+				mapping = cmp.mapping.preset.insert({
+					["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), -- Dont change text when navigating
+					["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), -- Dont change text when navigating
+					["<C-b>"] = cmp.mapping.scroll_docs(-4),
+					["<C-f>"] = cmp.mapping.scroll_docs(4),
+					["<C-Space>"] = cmp.mapping.complete(),
+					["<C-e>"] = cmp.mapping.abort(),
+					["<CR>"] = cmp.mapping.confirm({ select = false }), -- Can use alternative, <C-y>
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							-- You could replace select_next_item() with confirm({ select = true }) to get VS Code autocompletion behavior
-							cmp.select_next_item()
-						-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-						-- this way you will only jump inside the snippet region
-						elseif luasnip.expand_or_jumpable() then
+							cmp.confirm({ select = true })
+							-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+							-- this way you will only jump inside the snippet region
+						elseif luasnip.expand_or_locally_jumpable() then
 							luasnip.expand_or_jump()
 						elseif has_words_before() then
 							cmp.complete()
@@ -100,16 +108,12 @@ return {
 							fallback()
 						end
 					end, { "i", "s" }),
-					["<S-Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_prev_item()
-						elseif luasnip.jumpable(-1) then
+					["<S-Tab>"] = cmp.mapping(function()
+						if luasnip.jumpable(-1) then
 							luasnip.jump(-1)
-						else
-							fallback()
 						end
 					end, { "i", "s" }),
-				},
+				}),
 			})
 		end,
 	},

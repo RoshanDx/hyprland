@@ -32,7 +32,7 @@ return {
 		end,
 		formatters_by_ft = { -- NOTE: make sure dependencies are installed in Mason or externally
 			lua = { "stylua" },
-			json = { "prettierd" },
+			json = { "jq" },
 			go = { "goimports", "gofmt", "golines" },
 			yaml = { "yq" },
 			yml = { "yq" },

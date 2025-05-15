@@ -16,4 +16,5 @@ vim.opt.rtp:prepend(lazypath)
 require("options")
 require("keymaps")
 require("autocommands")
+require("quickfix")
 require("lazy").setup("plugins") -- Picks the /lua/plugins folder

@@ -41,5 +41,10 @@ vim.opt.cursorline = true -- Highlight current line
 vim.opt.scrolloff = 10 -- Number of lines to keep above/below cursor
 vim.opt.sidescrolloff = 10 -- Number of columns to keep to the left/right of cursor
 
+-- Code Folding
+vim.opt.foldlevelstart = 99
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 -- Misc
 vim.g.markdown_recommended_style = 0 -- Fix markdown indentation settings
