@@ -2,6 +2,7 @@
 
 # scripts to be imported
 audio_switcher="$HOME/.config/rofi/scripts/audio-device-switcher"
+calculator="$HOME/.config/rofi/scripts/calculator"
 
 # rofi theme
 theme="$HOME/.config/rofi/themes/app_menu.rasi"
@@ -9,14 +10,18 @@ notify="notify-send -u low -t 2000 $1 -u normal"
 
 # options to be displayed
 option0="Switch audio"
-options="$option0\n$option1\n$option2\n$option3\n$option4"
+option1="Calculator"
+options="$option0\n$option1"
 selected="$(echo -e "$options" | rofi -dmenu -i -selected-row 0 -theme "$theme")"
 
 # selections
 case $selected in
-    $option0)
-        $(eval "$audio_switcher")
-        $notify '  Audio switched'
-		;;
-	*)
+"$option0")
+  eval "$audio_switcher"
+  $notify '  Audio switched'
+  ;;
+"$option1")
+  eval "$calculator"
+  ;;
+*) ;;
 esac
