@@ -51,7 +51,6 @@ return {
 			{ "<leader>g", group = "[G]it" },
 			{ "<leader>G", group = "[G]olang" },
 			{ "<leader>J", group = "[J]ava" },
-			{ "<leader>l", group = "[L]azy" },
 			{ "<leader>q", group = "[Q]uicklist" },
 			{ "<leader>R", group = "[R]est" },
 			{ "<leader>s", group = "[S]earch" },

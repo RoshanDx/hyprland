@@ -29,9 +29,12 @@ return {
 
 		vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "[D]ebug [B]reakpoint" })
 		vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "[D]ebug [C]ontinue" })
+		vim.keymap.set("n", "<leader>dC", dap.run_to_cursor, { desc = "[D]ebug To [C]ursor" })
+		vim.keymap.set("n", "<leader>dl", dap.goto_, { desc = "[D]ebug Go To [L]ine" })
 		vim.keymap.set("n", "<leader>di", dap.step_over, { desc = "[D]ebug Step [I]nto" })
 		vim.keymap.set("n", "<leader>do", dap.step_over, { desc = "[D]ebug Step [O]ver" })
 		vim.keymap.set("n", "<leader>dO", dap.step_over, { desc = "[D]ebug Step [O]ut" })
+		vim.keymap.set("n", "<leader>dt", dap.terminate, { desc = "[D]ebug [T]erminate" })
 		vim.keymap.set("n", "<leader>dB", function()
 			vim.ui.input({ prompt = "Breakpoint Condition: " }, function(input)
 				if input then
@@ -62,6 +65,11 @@ return {
 		)
 		vim.fn.sign_define("DapStopped", { text = "▶", texthl = "", linehl = "DapStopped", numhl = "" })
 
+		-- DAP Virtual Text
+		require("nvim-dap-virtual-text").setup()
+
+		local dap_virtual_text = require("nvim-dap-virtual-text")
+
 		-- DAP View
 		local dv = require("dap-view")
 		dap.listeners.before.attach["dap-view-config"] = function()
@@ -72,15 +80,13 @@ return {
 		end
 		dap.listeners.before.event_terminated["dap-view-config"] = function()
 			dv.close()
+			vim.cmd("DapVirtualTextForceRefresh") -- Clear virtual text after session is terminated
 		end
 		dap.listeners.before.event_exited["dap-view-config"] = function()
 			dv.close()
 		end
 
-		vim.keymap.set("n", "<leader>du", dv.toggle, { desc = "[D]ebug [U]I" })
-
-		-- DAP Virtual Text
-		require("nvim-dap-virtual-text").setup()
+		vim.keymap.set("n", "<A-5>", dv.toggle, { desc = "[D]ebug [U]I" })
 
 		-- GO
 		require("dap-go").setup()

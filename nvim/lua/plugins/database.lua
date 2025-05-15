@@ -25,7 +25,7 @@ return {
 		})
 
 		local dbee = require("dbee")
-		vim.keymap.set("n", "<leader>Du", function()
+		vim.keymap.set("n", "<A-6>", function()
 			dbee.toggle()
 		end, { desc = "[D]atabase [U]I" })
 	end,
