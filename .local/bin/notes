@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Set default editor if not set (optional)
+: "${EDITOR:=vim}"
+DIR="$HOME/notes"
+
+# Check if the user passed 'edit' as an argument
+if [[ "$1" == "edit" ]]; then
+  if ! command -v "$EDITOR" &>/dev/null; then
+    echo "Error: EDITOR is not set or command '$EDITOR' not found."
+    exit 1
+  fi
+  cd "$HOME/notes" || exit 1
+  "$EDITOR" "$DIR"
+else
+  glow "$DIR"
+fi

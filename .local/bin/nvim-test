@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# Session Name
+SESSION="nvim-test"
+
+# Get current session if running
+SESSIONEXISTS=$(tmux list-sessions | grep $SESSION)
+
+# Only create tmux session if it doesn't already exist
+if [ "$SESSIONEXISTS" = "" ]; then
+
+  # Start New Session with our name
+  tmux new-session -d -s $SESSION
+
+  # Name first Window and start cmd
+  tmux rename-window -t 1 'go-test'
+  tmux send-keys -t 'go-test' 'cd ~/testprojects/go-test' C-m 'clear' C-m 'nvim .' C-m
+
+  # Create and setup pane for server
+  tmux new-window -t $SESSION:2 -n 'neovim'
+  tmux send-keys -t 'neovim' 'cd ~/.config/nvim' C-m 'clear' C-m 'nvim .' C-m
+
+fi
+
+# Attach session, on the main window
+tmux attach-session -t $SESSION:1
