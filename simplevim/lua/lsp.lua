@@ -1,11 +1,24 @@
 -- :h lsp-config
 
--- enable lsp completion
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
 	callback = function(event)
 		vim.lsp.completion.enable(true, event.data.client_id, event.buf)
 		vim.diagnostic.config({ virtual_text = true })
+
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+		capabilities.textDocument.foldingRange = {
+			dynamicRegistration = true,
+			lineFoldingOnly = true,
+		}
+
+		capabilities.textDocument.semanticTokens.multilineTokenSupport = true
+		capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+		vim.lsp.config("*", {
+			capabilities = capabilities,
+		})
 
 		local map = function(keys, func, desc, mode)
 			mode = mode or "n"
@@ -92,3 +105,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("bash_ls")
 vim.lsp.enable("gopls")
+vim.lsp.enable("htmlls")
+vim.lsp.enable("cssls")
+vim.lsp.enable("tailwindcss")

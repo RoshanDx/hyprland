@@ -1,4 +1,3 @@
-
 return {
 	"stevearc/conform.nvim",
 	event = { "BufReadPre", "BufWritePre" },
@@ -40,6 +39,7 @@ return {
 			xml = { "yq" },
 			bash = { "shfmt" },
 			sh = { "shfmt" },
+			html = { "prettier" },
 
 			-- Conform can also run multiple formatters sequentially
 			-- python = { "isort", "black" },

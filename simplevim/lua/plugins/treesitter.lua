@@ -28,7 +28,7 @@ return {
 		},
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "lua", "go" , "bash"},
+				ensure_installed = { "lua", "go", "bash", "html", "yaml", "css", "json" },
 				auto_install = true,
 				highlight = {
 					enable = true,
