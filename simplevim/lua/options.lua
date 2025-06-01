@@ -14,6 +14,7 @@ vim.schedule(function()
 end)
 vim.opt.confirm = true -- Raise dialog asking to save current file
 vim.opt.cmdheight = 0 -- Hide command input/output
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- Searching Behaviors
 vim.opt.hlsearch = true -- Highlight all matches in search

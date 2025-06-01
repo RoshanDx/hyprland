@@ -62,14 +62,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		--  the definition of its *type*, not where it was *defined*.
 		map("grt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
 
-		-- Add border to signature help
-		local function bordered_signature_help()
-			return vim.lsp.buf.signature_help(vim.tbl_deep_extend("force", {
-				border = "rounded",
-			}))
-		end
-
 		map("grk", vim.lsp.buf.signature_help, "[D]isplay Signature")
+
+		vim.api.nvim_create_autocmd("LspDetach", {
+			group = vim.api.nvim_create_augroup("lsp-detach", { clear = true }),
+			callback = function(event2)
+				vim.lsp.buf.clear_references()
+			end,
+		})
+
+		-- The following code creates a keymap to toggle inlay hints in your
+		-- code, if the language server you are using supports them
+		-- This may be unwanted, since they displace some of your code
+		local client = vim.lsp.get_client_by_id(event.data.client_id)
+		if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+			map("<leader>th", function()
+				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+			end, "[T]oggle Inlay [H]ints")
+		end
 
 		vim.diagnostic.config({
 			severity_sort = true,
@@ -102,9 +112,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- enable configured language servers
 -- you can find server configurations from lsp/*.lua files
-vim.lsp.enable("lua_ls")
-vim.lsp.enable("bash_ls")
+vim.lsp.enable("luals")
+vim.lsp.enable("bashls")
 vim.lsp.enable("gopls")
-vim.lsp.enable("htmlls")
+vim.lsp.enable("jsonls")
+vim.lsp.enable("html")
 vim.lsp.enable("cssls")
-vim.lsp.enable("tailwindcss")
+vim.lsp.enable("tailwindcssls")

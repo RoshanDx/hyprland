@@ -37,8 +37,8 @@ return {
 			yaml = { "yq" },
 			yml = { "yq" },
 			xml = { "yq" },
-			bash = { "shfmt" },
-			sh = { "shfmt" },
+			bash = { "shfmt", "shellcheck" },
+			sh = { "shfmt", "shellcheck" },
 			html = { "prettier" },
 
 			-- Conform can also run multiple formatters sequentially
