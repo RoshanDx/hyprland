@@ -1,6 +1,12 @@
 return {
 	{
+		"windwp/nvim-ts-autotag",
+		event = "VeryLazy",
+		opts = {},
+	},
+	{
 		"nvim-treesitter/nvim-treesitter-context",
+		event = { "VeryLazy" },
 		config = function()
 			require("treesitter-context").setup({
 				enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
@@ -22,10 +28,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		event = {
-			"BufReadPre",
-			"BufNewFile",
-		},
+		event = { "VeryLazy" },
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = { "lua", "go", "bash", "html", "yaml", "css", "json" },
